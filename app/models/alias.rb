@@ -1,0 +1,3 @@
+class Alias < SubjectsBase
+
+end

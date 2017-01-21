@@ -1,0 +1,69 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+  <div class="row">
+    <div class="col-sm-11 col-sm-offset-1">
+      <h4><%= @subject.Pedigree %> <%= @subject.Individual %>&nbsp;&nbsp;&nbsp;&nbsp;<%= @study.Name %>&nbsp;&nbsp;&nbsp;&nbsp;<%= @phi.FirstName %> <%= @phi.LastName %>&nbsp;&nbsp;&nbsp;&nbsp;<%= @subject.AffectionStatus %></h4>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-sm-3 col-sm-offset-1">
+      <select onchange="showTab(this)"> <!-- the idea here is to use jquery to show/hide the correct tab on selection. All the views would be loaded and hidden/shown via css display property -->
+        <option value="subject-tab">Subject</option>
+        <option value="susceptibility">Susceptibility</option>
+        <option value="epic-tab">EPIC</option>
+        <option value="origins">ORIGINS</option>
+        <option value="rebuild">ReBUILD</option>
+        <option value="imsms">iMSMS</option>
+        <option value="microbiome">Microbiome</option>
+        <option value="repository">Repository</option>
+      </select>
+    </div>
+  </div>
+
+  <hr>
+
+  <div id="subject-tab" class="subjects-view">
+
+    <%= render 'subjects/basic_ucsf_study_enrollment_data' %>
+
+    <hr>
+
+    <%= render 'subjects/study_enrollments' %>
+
+    <hr>
+
+    <%= render 'subjects/phi_&_contact_info' %>
+
+    <hr>
+
+    <%= render 'subjects/aliases' %>
+
+  </div> <!-- close subject-tab -->
+
+  <div id="epic-tab" class="subjects-view hidden">
+
+    <%= render 'subjects/epic/overview' %>
+
+  </div> <!-- close epic-tab -->
+
+</div> <!-- close container -->
+
+
+
+<script>
+
+function showTab(element) {
+  $('.subjects-view').each(function(i, j) {
+    if (j.id !== element.value) {
+      $('#'+j.id).addClass('hidden');
+    }
+    else {
+      $('#'+j.id).removeClass('hidden');
+    }
+  })
+}
+</script>

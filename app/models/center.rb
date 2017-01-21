@@ -1,0 +1,2 @@
+class Center < SubjectsBase
+end

@@ -1,0 +1,28 @@
+<div class="container">
+  <br>
+  <div class="row">
+    <%= form_for(@subject, :url => {:controller => "subjects", :action => "show"}) do |f| %>
+      <%= f.label :SubjectID,"Enter SubjectID: " %>
+      <%= f.text_field :SubjectID %>
+      <%= f.submit "Enter" %>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  function findSubject(searchbox) {
+    $.post({
+      url: '<%= Rails.application.routes.url_helpers.subjects_find_path %>',
+      dataType: 'json',
+      data: {"term":searchbox.value}
+    }).done(function(response) {
+      console.log(response)
+      $('#subjectsList').empty()
+      response.data.forEach(function(s) {
+        var $subject = '<div></div>';
+        var $link = '<%= link_to'+s.alias_term1+', subjects_show_path('+s.subjectid+') %>';
+        $('#subjectsList').append($subject);
+      })
+    })
+  }
+</script>

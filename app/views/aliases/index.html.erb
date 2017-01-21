@@ -1,0 +1,28 @@
+
+<h3>From Subjects._querytable</h3>
+<h6>Disease Status: <%=@querytable.Disease%></h6>
+<h6 style="display:inline;">Gender: </h6><select style="display:inline;" onchange="showValue(this, <%=@querytable.id%>)"><option value="M">M</option><option value="F">F</option><option value="U">U</option></select><br>
+<h6 style="display:inline;">Center:&nbsp;</h6><%=@querytable.Center%>:&nbsp;<%=@center.name%>
+<h6>MS Family History: <%=@querytable.FamilyMShistory%></h6>
+
+<%= form_for(@querytable, :url => querytables_update_path, :remote => true) do |f| %>
+  <%=f.label :Gender %>
+  <%=f.select :Gender, options_for_select(Querytable.pluck(:Gender).uniq, selected: @querytable.Gender), {}, :onchange => "alertChange("+@querytable.Gender.to_s+")" %>
+<% end %>
+
+<script>
+  function showValue(element, model) {
+    console.log(element.value, model);
+    $.post({
+      url: '<%=Rails.application.routes.url_helpers.aliases_change_placeholder_path%>',
+      data:{input:element.value, subject: "none"},
+      dataType: 'json'
+    }).done(function(response) {
+      console.log(response)
+    })
+  }
+
+  function alertChange(element) {
+    alert(element)
+  }
+  </script>

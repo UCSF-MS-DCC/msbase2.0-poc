@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1">
+    <select onchange="showEpicVisit(this)">
+      <option selected="selected">Overview</option>
+      <% @visits.each do |v| %>
+        <option data-json=<%= v.as_json %> ><%= v.VisitType %></option>
+      <% end %>
+    </select>
+  </div>
+</div>
+
+<div id="epic-visits-overview" class="epic-views">
+
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+      <h3>Overview</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+      <table>
+        <thead>
+          <tr>
+            <th>Sequence</th>
+            <th>Exam Date</th>
+            <th>Due Date</th>
+            <th>Visit</th>
+            <th>Status</th>
+            <th>Study</th>
+            <th>Active Flare</th>
+            <th>Status Comments</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @visits.each do |v| %>
+            <tr>
+              <td><%= v.VisitSeq %></td>
+              <td><%= v.ExamDate %></td>
+              <td><%= v.DueDate %></td>
+              <td><%= form_for(v, :url => visits_update_path, :method => 'patch', :remote => true, :html => {id:'visit-visit'+v.VisitSeq.to_s+'-form'}) do |f| %>
+                    <%= f.select :VisitType, options_for_select(v.visit_types, selected: v.VisitType),{include_blank: false}, onchange: "$('#visit-visit#{v.VisitSeq}-form').submit();" %>
+                    <%= f.hidden_field :VisitID, :value => v.VisitID %>
+                  <% end %></td>
+              <td><%= form_for(v, :url => visits_update_path, :method => 'patch', :remote => true, :html => {id:'visit-visit'+v.VisitSeq.to_s+'-visitstatus-form'}) do |f| %>
+                    <%= f.select :VisitStatus, options_for_select(v.visit_status_types, selected: v.VisitStatus),{include_blank: false}, onchange: "$('#visit-visit#{v.VisitSeq}-visitstatus-form').submit();" %>
+                    <%= f.hidden_field :VisitID, :value => v.VisitID %>
+                  <% end %></td>
+              <td><%= form_for(v, :url => visits_update_path, :method => 'patch', :remote => true, :html => {id:'visit-visit'+v.VisitSeq.to_s+'-epicproject-form'}) do |f| %>
+                    <%= f.select :Study, options_for_select(v.studies, selected: v.Study),{include_blank: false}, onchange: "$('#visit-visit#{v.VisitSeq}-epicproject-form').submit();" %>
+                    <%= f.hidden_field :VisitID, :value => v.VisitID %>
+                  <% end %></td>
+              <td><%= form_for(v, :url => visits_update_path, :method => 'patch', :remote => true, :html => {id:'visit-visit'+v.VisitSeq.to_s+'-visitduringflare-form'}) do |f| %>
+                    <%= f.check_box :VisitDuringFlare, checked: v.VisitDuringFlare, onchange: "$('#visit-visit#{v.VisitSeq}-visitduringflare-form').submit();" %>
+                    <%= f.hidden_field :VisitID, :value => v.VisitID %>
+                  <% end %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<div id="epic-visit-year-view" class="epic-views hidden">
+
+  <%= render 'subjects/epic/single_year' %>
+
+</div>
+
+<script>
+  function showEpicVisit(element) {
+    // $('#epic-visits-overview').addClass('hidden');
+    // $('#epic-visit-year-view').removeClass('hidden');
+  }
+</script>

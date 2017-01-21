@@ -1,0 +1,23 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  host: localhost
+  pool: 10
+  database: epic
+  username: root
+  password: sqlubuntu
+
+test:
+  adapter: mysql2
+  encoding: utf8
+  host: localhost
+  pool: 10
+  database: epic
+  username: root
+  password: sqlubuntu
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  url:  <%= ENV["DATABASE_STATS_URL"] %>
+  pool: <%= ENV["DB_POOL"] || 5 %>

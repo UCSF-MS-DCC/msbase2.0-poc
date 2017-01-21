@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1">
+
+      <div>
+        <%= form_for(@subject, :url => subjects_update_path, :method => 'patch', :remote => true, :html => {id:'disease-status-form'}) do |f| %>
+          <%= f.label :AffectionStatus, "Disease Status" %>
+          <%= f.select :AffectionStatus, options_for_select(@subject.affection_status_list, selected: @subject.AffectionStatus), {include_blank: false}, onchange: "$('#disease-status-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @subject.SubjectID %>
+        <% end %>
+        <%= form_for(@phenotype, :url => phenotypes_update_path, :method => 'patch', :remote => true, :html => {id:'phenotype-gender-form'}) do |f| %>
+          <%= f.label :gender, "Gender" %>
+          <%= f.select :gender, options_for_select(@phenotype.gender_list, selected: @phenotype.gender), {include_blank: false}, onchange: "$('#phenotype-gender-form').submit();" %>
+          <%= f.hidden_field :subject_master_id, :value => @phenotype.subject_master_id %>
+        <% end %>
+      </div>
+      <div>
+        <%= form_for(@subject, :url => subjects_update_path, :method => 'patch', :remote => true, :html => {id:'subject-center-form'}) do |f| %>
+          <%= f.label :Center, "Center" %>
+          <%= f.select :Center, options_for_select(Subject.pluck(:Center).uniq, selected: @subject.Center),{include_blank: false}, onchange: "$('#subject-center-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @subject.SubjectID %>
+        <% end %>
+      </div>
+      <div>
+        <%= form_for(@subject, :url => subjects_update_path, :method => 'patch', :remote => true, :html => {id:'subject-disease-status-flag-form'}) do |f| %>
+          <%= f.label :DiseaseStatusFlag, "Disease Status Flag" %>
+          <%= f.check_box :DiseaseStatusFlag, checked: @subject.DiseaseStatusFlag, onchange: "$('#subject-disease-status-flag-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @subject.SubjectID %>
+        <% end %>
+      </div>
+      <div>
+        <%= form_for(@subject, :url => subjects_update_path, :method => 'patch', :remote => true, :html => {id:'subject-disease-status-comments-form'}) do |f| %>
+          <%= f.label :DiseaseStatusComments, "Disease Status Comments" %>
+          <%= f.text_area :DiseaseStatusComments, value: @subject.DiseaseStatusComments, onchange: "$('#subject-disease-status-comments-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @subject.SubjectID %>
+        <% end %>
+      </div>
+      <div>
+        <%= form_for(@demographic, :url => demographics_update_path, :method => 'patch', :remote => true, :hmtl => {id:'demographic-familyhxofms-form'}) do |f| %>
+          <%= f.label :FamilyHxOfMS, "Family History of MS " %>
+          <%= f.check_box :FamilyHxOfMS, checked: @demographic.FamilyHxOfMS, onchange: "$('#demographic-familyhxofms-form').submit();" %>
+          <%= f.hidden_field :subjectid, :value => @demographic.subjectid %>
+        <% end %>
+      </div>
+      <div>
+        <%= form_for(@demographic, :url => demographics_update_path, :method => 'patch', :remote => true) do |f| %>
+          <%= f.label :SignificantHistory, "Other Significant History" %>
+          <%= f.text_area :SignificantHistory, value: @demographic.SignificantHistory %>
+          <%= f.hidden_field :subjectid, :value => @demographic.subjectid %>
+        <% end %>
+      </div>
+
+  </div>
+</div>

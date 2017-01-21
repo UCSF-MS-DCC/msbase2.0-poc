@@ -1,0 +1,361 @@
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1">
+
+    <div class="row"> <!-- line one row -->
+      <div class="col-sm-4">
+        <%= form_for(@subject, :url => subjects_update_path, :method => 'patch', :remote => true, :html => {id:'subject-do-not-contact-form'}) do |f| %>
+          <%= f.label :DoNotContact, "Do Not Contact" %>&nbsp;&nbsp;
+          <%= f.check_box :DoNotContact, checked: @subject.DoNotContact, onchange: "$('#subject-do-not-contact-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @subject.SubjectID %>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <%= form_for(@subject, :url => subjects_update_path, :method => 'patch', :remote => true, :html => {id:'subject-do-not-contact-status-form'}) do |f| %>
+          <%= f.label :DoNotContactStatus, "Reason" %>&nbsp;&nbsp;
+          <%= f.text_field :DoNotContactStatus, value: @subject.DoNotContactStatus, onenter: "$('#subject-do-not-contact-status-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @subject.SubjectID %>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <%= form_for(@subject, :url => subjects_update_path, :method => 'patch', :remote => true, :html => {id:'subject-ms-status-do-not-disclose-form'}) do |f| %>
+          <%= f.label :MSStatusDoNotDisclose, "Do Not Disclose MS" %>&nbsp;&nbsp;
+          <%= f.check_box :MSStatusDoNotDisclose, checked: @subject.MSStatusDoNotDisclose, onchange: "$('#subject-ms-status-do-not-disclose-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @subject.SubjectID %>
+        <% end %>
+      </div>
+    </div> <!-- end line one row -->
+
+    <div class="row"> <!-- line two row -->
+      <div class="col-sm-4">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-deceased-form'}) do |f| %>
+          <%= f.label :Deceased, "Deceased" %>&nbsp;&nbsp;
+          <%= f.check_box :Deceased, checked: @phi.Deceased, onchange: "$('#phi-deceased-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-cause-of-death-form'}) do |f| %>
+          <%= f.label :CauseOfDeath, "Cause of Death" %>&nbsp;&nbsp;
+          <%= f.text_field :CauseOfDeath, value: @phi.CauseOfDeath, onenter: "$('#phi-cause-of-death-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-date-of-death-form'}) do |f| %>
+          <%= f.label :DateofDeath, "Date of Death" %>&nbsp;&nbsp;
+          <%= f.text_field :DateofDeath, value: @phi.DateofDeath, onenter: "$('#phi-date-of-death-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+    </div> <!-- end line two row -->
+
+    <div class="row"> <!-- line row three -->
+      <div class="col-sm-4">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-firstname-form'}) do |f| %>
+          <%= f.label :FirstName, "First" %>&nbsp;&nbsp;
+          <%= f.text_field :FirstName, value: @phi.FirstName, onenter: "$('#phi-firstname-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-middlename-form'}) do |f| %>
+          <%= f.label :MiddleName, "Middle" %>&nbsp;&nbsp;
+          <%= f.text_field :MiddleName, value: @phi.MiddleName, onenter: "$('#phi-middlename-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-lastname-form'}) do |f| %>
+          <%= f.label :LastName, "Last" %>&nbsp;&nbsp;
+          <%= f.text_field :LastName, value: @phi.LastName, onenter: "$('#phi-lastname-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+    </div> <!-- end line row three -->
+
+    <div class="row"> <!-- line row four -->
+      <div class="col-sm-4">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-alt-lastname-form'}) do |f| %>
+          <%= f.label :AltLastname, "Alt. Last" %>&nbsp;&nbsp;
+          <%= f.text_field :AltLastname, value: @phi.AltLastname, onenter: "$('#phi-alt-lastname-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-suffix-form'}) do |f| %>
+          <%= f.label :Suffix, "Suffix" %>&nbsp;&nbsp;
+          <%= f.text_field :Suffix, value: @phi.Suffix, onenter: "$('#phi-suffix-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-initials-form'}) do |f| %>
+          <%= f.label :Initials, "Initials" %>&nbsp;&nbsp;
+          <%= f.text_field :Initials, value: @phi.Initials, onenter: "$('#phi-initials-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+    </div>
+    <!-- end line row four -->
+
+    <!-- line row five -->
+    <div class="row">
+      <div class="col-sm-4">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-nickname-form'}) do |f| %>
+          <%= f.label :Nickname, "Nickname" %>&nbsp;&nbsp;
+          <%= f.text_field :Nickname, value: @phi.Nickname, onenter: "$('#phi-nickname-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+      <div class="col-sm-3">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-dob-form'}) do |f| %>
+          <%= f.label :DOB, "DOB" %>&nbsp;&nbsp;
+          <%= f.text_field :DOB, value: @phi.DOB.strftime('%m/%d/%Y'), onenter: "$('#phi-dob-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+      <div class="col-sm-3">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-dob-not-on-file-form'}) do |f| %>
+          <%= f.label :DOBNotOnFile, "DOB Not On File" %>&nbsp;&nbsp;
+          <%= f.check_box :DOBNotOnFile, checked: @phi.DOBNotOnFile, onchange: "$('#phi-dob-not-on-file-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+      <div class="col-sm-2">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-current-age-form'}) do |f| %>
+          <%= f.label :current_age, "Curr. Age:" %>&nbsp;&nbsp;<%= curr_age(@phi.DOB) %> <!-- this value is calculated here and is not saved in the database. See helper method 'curr_age' in app/helpers/subjects_helper.rb -->
+        <% end %>
+      </div>
+    </div>
+    <!-- end line row five -->
+
+    <!-- line row six -->
+    <div class="row">
+      <div class="col-sm-4">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-primary-phone-form'}) do |f| %>
+          <%= f.label :PrimaryPhone, "Primary Phone" %>&nbsp;&nbsp;
+          <%= f.text_field :PrimaryPhone, value: @phi.PrimaryPhone, onenter: "$('#phi-primary-phone-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+      <div class="col-sm-2">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-primary-phone-type-form'}) do |f| %>
+          <%= f.select :PrimaryPhoneType, options_for_select(@phi.phone_types, selected: @phi.PrimaryPhoneType),{include_blank: false}, onchange: "$('#phi-primary-phone-type-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+    </div>
+    <!-- end line row six -->
+
+    <!-- line row seven -->
+    <div class="row">
+      <div class="col-sm-4">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-alt1-phone-form'}) do |f| %>
+          <%= f.label :Alt1Phone, "Alt1 Phone" %>&nbsp;&nbsp;
+          <%= f.text_field :Alt1Phone, value: @phi.Alt1Phone, onenter: "$('#phi-alt1-phone-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+      <div class="col-sm-2">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-alt1-phone-type-form'}) do |f| %>
+          <%= f.select :Alt1PhoneType, options_for_select(@phi.phone_types, selected: @phi.Alt1PhoneType),{include_blank: false}, onchange: "$('#phi-alt1-phone-type-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+    </div>
+    <!-- end line row seven -->
+
+    <!-- line row eight -->
+    <div class="row">
+      <div class="col-sm-4">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-alt2-phone-form'}) do |f| %>
+          <%= f.label :Alt2Phone, "Alt2 Phone" %>&nbsp;&nbsp;
+          <%= f.text_field :Alt2Phone, value: @phi.Alt2Phone, onenter: "$('#phi-alt2-phone-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+      <div class="col-sm-2">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-alt2-phone-type-form'}) do |f| %>
+          <%= f.select :Alt2PhoneType, options_for_select(@phi.phone_types, selected: @phi.Alt2PhoneType),{include_blank: false}, onchange: "$('#phi-alt2-phone-type-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+    </div>
+    <!-- end line row eight -->
+
+    <!-- line row nine -->
+    <div class="row">
+      <div class="col-sm-4">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-alt3-phone-form'}) do |f| %>
+          <%= f.label :Alt3Phone, "Alt3 Phone" %>&nbsp;&nbsp;
+          <%= f.text_field :Alt3Phone, value: @phi.Alt3Phone, onenter: "$('#phi-alt3-phone-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+      <div class="col-sm-2">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-alt3-phone-type-form'}) do |f| %>
+          <%= f.select :Alt3PhoneType, options_for_select(@phi.phone_types, selected: @phi.Alt3PhoneType),{include_blank: false}, onchange: "$('#phi-alt3-phone-type-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+    </div>
+    <!-- end line row nine -->
+
+    <!-- line row ten -->
+    <div class="row">
+      <div class="col-sm-6">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-address-form'}) do |f| %>
+          <%= f.label :Address, "Address" %>&nbsp;&nbsp;
+          <%= f.text_field :Address, value: @phi.Address, onenter: "$('#phi-address-form').submit();", style: "width:75%;" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+    </div>
+    <!-- end line row ten -->
+
+    <!-- line row eleven -->
+    <div class="row">
+      <div class="col-sm-6">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-address2-form'}) do |f| %>
+          <%= f.label :Address2, "Address 2" %>&nbsp;&nbsp;
+          <%= f.text_field :Address2, value: @phi.Address2, onenter: "$('#phi-address2-form').submit();", style: "width:75%;" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+    </div>
+    <!-- end line row eleven -->
+
+    <!-- line row twelve -->
+    <div class="row">
+      <div class="col-sm-4">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-city-form'}) do |f| %>
+          <%= f.label :City, "City" %>&nbsp;&nbsp;
+          <%= f.text_field :City, value: @phi.City, onenter: "$('#phi-city-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-state-or-province-form'}) do |f| %>
+          <%= f.label :StateOrProvince, "State/Province" %>&nbsp;&nbsp;
+          <%= f.text_field :StateOrProvince, value: @phi.StateOrProvince, onenter: "$('#phi-state-or-province-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-postal-code-form'}) do |f| %>
+          <%= f.label :PostalCode, "Postal Code" %>&nbsp;&nbsp;
+          <%= f.text_field :PostalCode, value: @phi.PostalCode, onenter: "$('#phi-postal-code-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+    </div>
+    <!-- end line row twelve -->
+
+    <!-- line row thirteen -->
+    <div class="row">
+      <div class="col-sm-6">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-country-form'}) do |f| %>
+          <%= f.label :Country, "Country" %>&nbsp;&nbsp;
+          <%= f.text_field :Country, value: @phi.Country, onenter: "$('#phi-country-form').submit();", style: "width:75%;" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+    </div>
+    <!-- end line row thirteen -->
+
+    <!-- line row fourteen -->
+    <div class="row">
+      <div class="col-sm-6">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-email-address-form'}) do |f| %>
+          <%= f.label :EmailAddress, "Email" %>&nbsp;&nbsp;
+          <%= f.text_field :EmailAddress, value: @phi.EmailAddress, onenter: "$('#phi-email-address-form').submit();", style: "width:75%;" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+      <div class="col-sm-6">
+        <%= form_for(@subject, :url => subjects_update_path, :method => 'patch', :remote => true, :html => {id:'subject-email-newsletter-form'}) do |f| %>
+          <%= f.label :EmailNewsletter, "Email Newsletter?" %>
+          <%= f.select :EmailNewsletter, options_for_select(@subject.email_newletter_options_list, selected: @subject.EmailNewsletter),{include_blank: false}, onchange: "$('#subject-email-newsletter-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @subject.SubjectID %>
+        <% end %>
+      </div>
+    </div>
+    <!-- end line row fourteen -->
+
+    <hr>
+
+    <!-- line row fifteen -->
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Shipping Address</h5>
+      </div>
+    </div>
+    <!-- end line row fifteen -->
+
+    <!-- line row sixteen -->
+    <div class="row">
+      <div class="col-sm-6">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-ship-address-form'}) do |f| %>
+          <%= f.label :ShipAddress, "Address" %>&nbsp;&nbsp;
+          <%= f.text_field :ShipAddress, value: @phi.ShipAddress, onenter: "$('#phi-ship-address-form').submit();", style: "width:75%;" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+    </div>
+    <!-- end line row sixteen -->
+
+    <!-- line row seventeen -->
+    <div class="row">
+      <div class="col-sm-6">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-ship-address2-form'}) do |f| %>
+          <%= f.label :ShipAddress2, "Address2" %>&nbsp;&nbsp;
+          <%= f.text_field :ShipAddress2, value: @phi.ShipAddress2, onenter: "$('#phi-ship-address2-form').submit();", style: "width:75%;" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+    </div>
+    <!-- end line row seventeen -->
+
+    <!-- line row eighteen -->
+    <div class="row">
+      <div class="col-sm-4">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-ship-city-form'}) do |f| %>
+          <%= f.label :ShipCity, "City" %>&nbsp;&nbsp;
+          <%= f.text_field :ShipCity, value: @phi.ShipCity, onenter: "$('#phi-ship-city-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-ship-state-or-province-form'}) do |f| %>
+          <%= f.label :ShipStateorProvince, "State/Province" %>&nbsp;&nbsp;
+          <%= f.text_field :ShipStateorProvince, value: @phi.ShipStateorProvince, onenter: "$('#phi-ship-state-or-province-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-postal-code-form'}) do |f| %>
+          <%= f.label :PostalCode, "Postal Code" %>&nbsp;&nbsp;
+          <%= f.text_field :PostalCode, value: @phi.PostalCode, onenter: "$('#phi-postal-code-form').submit();" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+    </div>
+    <!-- end line row eighteen -->
+
+    <!-- line row nineteen -->
+    <div class="row">
+      <div class="col-sm-6">
+        <%= form_for(@phi, :url => phis_update_path, :method => 'patch', :remote => true, :html => {id:'phi-ship-country-form'}) do |f| %>
+          <%= f.label :ShipCountry, "Country" %>&nbsp;&nbsp;
+          <%= f.text_field :ShipCountry, value: @phi.ShipCountry, onenter: "$('#phi-ship-country-form').submit();", style: "width:75%;" %>
+          <%= f.hidden_field :SubjectID, :value => @phi.SubjectID %>
+        <% end %>
+      </div>
+    </div>
+    <!-- end line row nineteen -->
+
+
+
+  </div>
+</div>
+<!-- use phi and subject table -->
